@@ -10,7 +10,7 @@ function! ctrlspace#keys#tab#Init() abort
     call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#MoveTab",               "Tab", ["{", "}", "+", "-"])
     call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#NewTabLabel",           "Tab", ["=", "m"])
     call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#RemoveTabLabel",        "Tab", ["_"])
-    call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#CollectUnsavedBuffers", "Tab", ["u"])
+    call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#CollectUnsavedBuffers", "Tab", ["j"])
     call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#CollectForeignBuffers", "Tab", ["f"])
     call ctrlspace#keys#AddMapping("ctrlspace#keys#tab#NewWorkspace",          "Tab", ["N"])
 endfunction

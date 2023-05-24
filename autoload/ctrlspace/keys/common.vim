@@ -6,8 +6,8 @@ let s:lastListView = "Buffer"
 
 function! ctrlspace#keys#common#Init() abort
     call s:map("ToggleHelp",                   "?")
-    call s:map("Down",                         "j")
-    call s:map("Up",                           "k")
+    call s:map("Down",                         "e")
+    call s:map("Up",                           "u")
     call s:map("Previous",                     "p")
     call s:map("PreviousCR",                   "P")
     call s:map("Next",                         "n")
@@ -18,9 +18,9 @@ function! ctrlspace#keys#common#Init() abort
     call s:map("DownArrow",                    "Down")
     call s:map("UpArrow",                      "Up")
     call s:map("Home",                         "Home")
-    call s:map("Top",                          "K")
+    call s:map("Top",                          "U")
     call s:map("End",                          "End")
-    call s:map("Bottom",                       "J")
+    call s:map("Bottom",                       "E")
     call s:map("PageDown",                     "PageDown")
     call s:map("ScrollDown",                   'C-f')
     call s:map("PageUp",                       "PageUp")
