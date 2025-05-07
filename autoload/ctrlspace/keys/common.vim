@@ -44,6 +44,16 @@ function! ctrlspace#keys#common#Init() abort
     call s:map("ToggleBookmarkMode",           "b")
     call s:map("ToggleBookmarkModeAndSearch",  "B")
 
+    call s:map("CountPrefix1",                 "1")
+    call s:map("CountPrefix2",                 "2")
+    call s:map("CountPrefix3",                 "3")
+    call s:map("CountPrefix4",                 "4")
+    call s:map("CountPrefix5",                 "5")
+    call s:map("CountPrefix6",                 "6")
+    call s:map("CountPrefix7",                 "7")
+    call s:map("CountPrefix8",                 "8")
+    call s:map("CountPrefix9",                 "9")
+
     let keyMap  = ctrlspace#keys#KeyMap()
     let helpMap = ctrlspace#help#HelpMap()
 
@@ -289,6 +299,71 @@ endfunction
 
 function! ctrlspace#keys#common#ToggleBookmarkModeAndSearch(k) abort
     return s:toggleListViewAndSearch(a:k, "Bookmark")
+endfunction
+
+function! ctrlspace#keys#common#CountPrefix1(k) abort
+  return s:CountPrefix(1)
+endfunction
+function! ctrlspace#keys#common#CountPrefix2(k) abort
+  return s:CountPrefix(2)
+endfunction
+function! ctrlspace#keys#common#CountPrefix3(k) abort
+  return s:CountPrefix(3)
+endfunction
+function! ctrlspace#keys#common#CountPrefix4(k) abort
+  return s:CountPrefix(4)
+endfunction
+function! ctrlspace#keys#common#CountPrefix5(k) abort
+  return s:CountPrefix(5)
+endfunction
+function! ctrlspace#keys#common#CountPrefix6(k) abort
+  return s:CountPrefix(6)
+endfunction
+function! ctrlspace#keys#common#CountPrefix7(k) abort
+  return s:CountPrefix(7)
+endfunction
+function! ctrlspace#keys#common#CountPrefix8(k) abort
+  return s:CountPrefix(8)
+endfunction
+function! ctrlspace#keys#common#CountPrefix9(k) abort
+  return s:CountPrefix(9)
+endfunction
+
+function! s:CountPrefix(initial_digit) abort
+  let digitString = '' . a:initial_digit
+  let nonDigitChar = ''
+
+  while 1
+    let char = nr2char(getchar())
+
+    if char =~# '[0-9]'
+      let digitString .= char
+    else
+      let nonDigitChar = char
+      break
+    endif
+  endwhile
+
+  let l:number = str2nr(digitString)
+
+  " Check if the input character is either k or j
+  if nonDigitChar =~# 'j'
+  	let l:count = 0
+    while l:count < l:number
+      call ctrlspace#window#MoveSelectionBar('down')
+      let l:count += 1
+    endwhile
+  elseif nonDigitChar =~# 'k'
+  	let l:count = 0
+    while l:count < l:number
+      	call ctrlspace#window#MoveSelectionBar('up')
+      	let l:count += 1
+    endwhile
+  " If the input character is not k or j, print warning
+  else
+    echo 'Only "j" and "k" accept counts!'
+  endif
+  return 1
 endfunction
 
 function! ctrlspace#keys#common#ToggleBookmarkMode(k) abort
